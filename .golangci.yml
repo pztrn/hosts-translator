@@ -1,0 +1,28 @@
+run:
+  deadline: 5m
+linters:
+  enable-all: true
+  disable:
+    # While it might be useful it'll create more problems that will solve.
+    - gocritic
+    # Magic numbers might be everywhere. Disabled for now.
+    - gomnd
+    # Why? WHY? WHY _test???
+    - testpackage
+linters-settings:
+  lll:
+    line-length: 120
+  gocyclo:
+    min-complexity: 40
+  gocognit:
+    min-complexity: 40
+  funlen:
+    lines: 200
+    statements: 100
+
+issues:
+  exclude-rules:
+    # There will be some ToDos.
+    - linters:
+        - godox
+      text: "TODO"

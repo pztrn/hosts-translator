@@ -1,0 +1,13 @@
+variables:
+  LINTTEST_IMAGE: ${CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX}/golangci/golangci-lint:v1.33.0
+
+stages:
+  - test
+
+lint:
+  stage: test
+  tags:
+    - docker
+  image: $LINTTEST_IMAGE
+  script:
+    - golangci-lint run
